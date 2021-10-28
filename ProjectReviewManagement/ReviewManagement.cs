@@ -55,5 +55,17 @@ namespace ProjectReviewManagement
                 Console.WriteLine($"{review.ProductID}\t\t{review.Review}");
             }
         }
+
+        // UC6
+        public void SkipTopFiveReviews(IList<ProductReview> productReviews)
+        {
+            var resultList = (from review in productReviews select review).Skip(5);
+            // Console.WriteLine($"Number of reviews : {resultList.Count()}");
+            Console.WriteLine($"\nProductID\tUserID\tRating\tReview\tisLike");
+            foreach (ProductReview review in resultList)
+            {
+                Console.WriteLine($"{review.ProductID}\t\t{review.UserID}\t{review.Rating}\t{review.Review}\t{review.isLike}");
+            }
+        }
     }
 }

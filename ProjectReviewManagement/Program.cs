@@ -28,7 +28,7 @@ namespace ProjectReviewManagement
             {
                 Console.WriteLine("Select UC number: 1. Add reviews to list, 2. TopThreeHighestRatedReviews\n" +
                     "3. RetrieveRequiredData, 4. CountOfReviesGroupedByProductId\n" +
-                    "5. GetRequiredFields");
+                    "5. GetRequiredFields, 6. SkipTopFiveReviews");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -55,6 +55,10 @@ namespace ProjectReviewManagement
                     case 5:
                         // UC5
                         reviewManagement.GetRequiredFields(productReviews);
+                        break;
+                    case 6:
+                        // UC6
+                        reviewManagement.SkipTopFiveReviews(productReviews);
                         break;
                     default:
                         isRun = !isRun;
