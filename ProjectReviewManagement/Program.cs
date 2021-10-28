@@ -23,12 +23,14 @@ namespace ProjectReviewManagement
                 productReviews.Add(review);
             }
             ReviewManagement reviewManagement = new ReviewManagement();
+            List<int> listOfOptions = new List<int>(); 
             bool isRun = true;
             while (isRun)
             {
                 Console.WriteLine("Select UC number: 1. Add reviews to list, 2. TopThreeHighestRatedReviews\n" +
                     "3. RetrieveRequiredData, 4. CountOfReviesGroupedByProductId\n" +
-                    "5. GetRequiredFields, 6. SkipTopFiveReviews");
+                    "5. GetRequiredFields, 6. SkipTopFiveReviews, 7. GetRequiredFields,\n" +
+                    "8. AddDataToTable, 9. GetReviewsWithIsLikeAsTrue");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -66,22 +68,26 @@ namespace ProjectReviewManagement
                         break;
                     case 8:
                         // UC8 
-                        reviewManagement.AddDataToTable(productReviews);
+                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9))
+                        {
+                            reviewManagement.AddDataToTable(productReviews);
+                        }
                         break;
+                    case 9:
+                        // UC8 
+                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9))
+                        {
+                            reviewManagement.AddDataToTable(productReviews);
+                        }
+                        reviewManagement.GetReviewsWithIsLikeAsTrue();
+                        break;
+
                     default:
                         isRun = !isRun;
                         break;
                 }
+                listOfOptions.Add(option);
             }
-            
-
-           
-
-            
-
-            
-
-            
         }
     }
 }

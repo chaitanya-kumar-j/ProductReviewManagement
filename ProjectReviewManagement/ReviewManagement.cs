@@ -96,5 +96,16 @@ namespace ProjectReviewManagement
             }
         }
 
+        // UC9
+        public void GetReviewsWithIsLikeAsTrue()
+        {
+            var reviewsTable = from review in table.AsEnumerable() where review.Field<bool>("isLike").Equals(true) select review;
+            Console.WriteLine($"\nProductID\tUserID\tRating\tReview\tisLike");
+            foreach (DataRow review in reviewsTable)
+            {
+                Console.WriteLine($"{review.Field<int>("productId")}\t\t{review.Field<int>("UserId")}\t" +
+                    $"{review.Field<double>("Rating")}\t{review.Field<string>("Review")}\t{review.Field<bool>("isLike")}");
+            }
+        }
     }
 }
