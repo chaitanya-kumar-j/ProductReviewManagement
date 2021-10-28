@@ -34,6 +34,15 @@ namespace ProjectReviewManagement
         }
 
         // UC4
-
+        public void CountOfReviesGroupedByProductId(IList<ProductReview> productReviews)
+        {
+            var resultCount = productReviews.GroupBy(x => x.ProductID).OrderBy(x => x.Key)
+                .Select(x => new { ProductID = x.Key, Count = x.Count() });
+            Console.WriteLine("nProductID\tNumberOfReviews");
+            foreach (var count in resultCount)
+            {
+                Console.WriteLine($"{count.ProductID}\t\t{count.Count}");
+            }
+        }
     }
 }
