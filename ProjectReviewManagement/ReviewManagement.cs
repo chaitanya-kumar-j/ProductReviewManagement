@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
 
 namespace ProjectReviewManagement
 {
@@ -67,5 +68,33 @@ namespace ProjectReviewManagement
                 Console.WriteLine($"{review.ProductID}\t\t{review.UserID}\t{review.Rating}\t{review.Review}\t{review.isLike}");
             }
         }
+
+        // UC7 
+        //same as UC5
+
+        // UC8
+        DataTable table = new DataTable();
+        public void AddDataToTable(IList<ProductReview> productReviews)     
+        {
+            table.Columns.Add("ProductID").DataType = typeof(Int32);
+            table.Columns.Add("UserID").DataType = typeof(Int32);
+            table.Columns.Add("Rating").DataType = typeof(double);
+            table.Columns.Add("Review").DataType = typeof(string);
+            table.Columns.Add("isLike").DataType = typeof(bool);
+
+            foreach(var review in productReviews)
+            {
+                table.Rows.Add(review.ProductID, review.UserID, review.Rating, review.Review, review.isLike);
+            }
+
+            var reviewsTable = from review in table.AsEnumerable() select review;
+            Console.WriteLine($"\nProductID\tUserID\tRating\tReview\tisLike");
+            foreach (DataRow review in reviewsTable)
+            {
+                Console.WriteLine($"{review.Field<int>("productId")}\t\t{review.Field<int>("UserId")}\t" +
+                    $"{review.Field<double>("Rating")}\t{review.Field<string>("Review")}\t{review.Field<bool>("isLike")}");
+            }
+        }
+
     }
 }

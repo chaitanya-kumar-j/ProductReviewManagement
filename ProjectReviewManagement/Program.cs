@@ -64,6 +64,10 @@ namespace ProjectReviewManagement
                         // UC7
                         reviewManagement.GetRequiredFields(productReviews);
                         break;
+                    case 8:
+                        // UC8 
+                        reviewManagement.AddDataToTable(productReviews);
+                        break;
                     default:
                         isRun = !isRun;
                         break;
