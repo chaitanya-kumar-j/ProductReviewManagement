@@ -60,6 +60,10 @@ namespace ProjectReviewManagement
                         // UC6
                         reviewManagement.SkipTopFiveReviews(productReviews);
                         break;
+                    case 7:
+                        // UC7
+                        reviewManagement.GetRequiredFields(productReviews);
+                        break;
                     default:
                         isRun = !isRun;
                         break;
