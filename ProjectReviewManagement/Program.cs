@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace ProjectReviewManagement
@@ -7,6 +8,7 @@ namespace ProjectReviewManagement
     {
         static void Main(string[] args)
         {
+            // UC1 
             IList<ProductReview> productReviews = new List<ProductReview>() { };
             List<string> reviewList = new List<string>() { "Good", "Bad", "Ok" };
             Random random = new Random();
@@ -20,10 +22,24 @@ namespace ProjectReviewManagement
                 review.isLike = Convert.ToBoolean(random.Next(2));
                 productReviews.Add(review);
             }
-            foreach(ProductReview review in productReviews)
+            Console.WriteLine($"\nProductID\tUserID\tRating\tReview\tisLike");
+            foreach (ProductReview review in productReviews)
             {
-                Console.WriteLine($"{review.ProductID}-{review.UserID}-{review.Rating}-{review.Review}-{review.isLike}");
+                
+                Console.WriteLine($"{review.ProductID}\t\t{review.UserID}\t{review.Rating}\t{review.Review}\t{review.isLike}");
             }
+
+            // UC2
+            var resultList = (from review in productReviews
+                               orderby review.Rating descending
+                               select review).Take(3);
+            Console.WriteLine($"\nProductID\tUserID\tRating\tReview\tisLike");
+            foreach (ProductReview review in resultList)
+            {
+                Console.WriteLine($"{review.ProductID}\t\t{review.UserID}\t{review.Rating}\t{review.Review}\t{review.isLike}");
+            }
+
+            // UC3
         }
     }
 }
