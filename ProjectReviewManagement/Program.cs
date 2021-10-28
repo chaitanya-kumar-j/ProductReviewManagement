@@ -22,24 +22,54 @@ namespace ProjectReviewManagement
                 review.isLike = Convert.ToBoolean(random.Next(2));
                 productReviews.Add(review);
             }
-            Console.WriteLine($"\nProductID\tUserID\tRating\tReview\tisLike");
-            foreach (ProductReview review in productReviews)
-            {
-                
-                Console.WriteLine($"{review.ProductID}\t\t{review.UserID}\t{review.Rating}\t{review.Review}\t{review.isLike}");
-            }
-
             ReviewManagement reviewManagement = new ReviewManagement();
+            bool isRun = true;
+            while (isRun)
+            {
+                Console.WriteLine("Select UC number: 1. Add reviews to list, 2. TopThreeHighestRatedReviews\n" +
+                    "3. RetrieveRequiredData, 4. CountOfReviesGroupedByProductId\n" +
+                    "5. GetRequiredFields");
+                int option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        Console.WriteLine($"\nProductID\tUserID\tRating\tReview\tisLike");
+                        foreach (ProductReview review in productReviews)
+                        {
 
-            // UC2
-            reviewManagement.TopThreeHighestRatedReviews(productReviews);
+                            Console.WriteLine($"{review.ProductID}\t\t{review.UserID}\t{review.Rating}\t{review.Review}\t{review.isLike}");
+                        }
+                        break;
+                    case 2:
+                        // UC2
+                        reviewManagement.TopThreeHighestRatedReviews(productReviews);
+                        break;
+                    case 3:
+                        // UC3
+                        reviewManagement.RetrieveRequiredData(productReviews);
+                        break;
+                    case 4:
+                        // UC4
+                        reviewManagement.CountOfReviesGroupedByProductId(productReviews);
+                        break;
+                    case 5:
+                        // UC5
+                        reviewManagement.GetRequiredFields(productReviews);
+                        break;
+                    default:
+                        isRun = !isRun;
+                        break;
+                }
+            }
+            
 
-            // UC3
-            reviewManagement.RetrieveRequiredData(productReviews);
+           
 
-            // UC4
-            reviewManagement.CountOfReviesGroupedByProductId(productReviews);
+            
 
+            
+
+            
         }
     }
 }

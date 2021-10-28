@@ -44,5 +44,16 @@ namespace ProjectReviewManagement
                 Console.WriteLine($"{count.ProductID}\t\t{count.Count}");
             }
         }
+
+        // UC5
+        public void GetRequiredFields(IList<ProductReview> productReviews)
+        {
+            var resultList = from review in productReviews select (review.ProductID, review.Review);
+            Console.WriteLine("nProductID\tReview");
+            foreach (var review in resultList)
+            {
+                Console.WriteLine($"{review.ProductID}\t\t{review.Review}");
+            }
+        }
     }
 }
