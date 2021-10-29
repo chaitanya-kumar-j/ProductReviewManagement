@@ -118,5 +118,17 @@ namespace ProjectReviewManagement
                 Console.WriteLine($"{count.ProductID}\t\t{count.AverageRating}");
             }
         }
+
+        // UC11
+        public void GetReviewsWithReviewAsNice()
+        {
+            var reviewsTable = from review in table.AsEnumerable() where review.Field<string>("Review").Equals("Nice") select review;
+            Console.WriteLine($"\nProductID\tUserID\tRating\tReview\tisLike");
+            foreach (DataRow review in reviewsTable)
+            {
+                Console.WriteLine($"{review.Field<int>("productId")}\t\t{review.Field<int>("UserId")}\t" +
+                    $"{review.Field<double>("Rating")}\t{review.Field<string>("Review")}\t{review.Field<bool>("isLike")}");
+            }
+        }
     }
 }
