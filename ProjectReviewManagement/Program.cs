@@ -30,7 +30,8 @@ namespace ProjectReviewManagement
                 Console.WriteLine("Select UC number:\n1. Add reviews to list, 2. TopThreeHighestRatedReviews\n" +
                     "3. RetrieveRequiredData, 4. CountOfReviesGroupedByProductId\n" +
                     "5. GetRequiredFields, 6. SkipTopFiveReviews, 7. GetRequiredFields,\n" +
-                    "8. AddDataToTable, 9. GetReviewsWithIsLikeAsTrue, 10. GetAverageRatingOfEachProductId, 11. GetReviewsWithReviewAsNice\n");
+                    "8. AddDataToTable, 9. GetReviewsWithIsLikeAsTrue, 10. GetAverageRatingOfEachProductId,\n" +
+                    "11. GetReviewsWithReviewAsNice, 12. AddAndGetUserIdTenOnly");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -68,32 +69,40 @@ namespace ProjectReviewManagement
                         break;
                     case 8:
                         // UC8 
-                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9) && !listOfOptions.Contains(10) && !listOfOptions.Contains(11))
+                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9) && !listOfOptions.Contains(10) && !listOfOptions.Contains(11) && !listOfOptions.Contains(12))
                         {
                             reviewManagement.AddDataToTable(productReviews);
                         }
                         break;
                     case 9:
                         // UC8 
-                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9) && !listOfOptions.Contains(10) && !listOfOptions.Contains(11))
+                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9) && !listOfOptions.Contains(10) && !listOfOptions.Contains(11) && !listOfOptions.Contains(12))
                         {
                             reviewManagement.AddDataToTable(productReviews);
                         }
                         reviewManagement.GetReviewsWithIsLikeAsTrue();
                         break;
                     case 10:
-                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9) && !listOfOptions.Contains(10) && !listOfOptions.Contains(11))
+                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9) && !listOfOptions.Contains(10) && !listOfOptions.Contains(11) && !listOfOptions.Contains(12))
                         {
                             reviewManagement.AddDataToTable(productReviews);
                         }
                         reviewManagement.GetAverageRatingOfEachProductId();
                         break;
                     case 11:
-                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9) && !listOfOptions.Contains(10) && !listOfOptions.Contains(11))
+                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9) && !listOfOptions.Contains(10) && !listOfOptions.Contains(11) && !listOfOptions.Contains(12))
                         {
                             reviewManagement.AddDataToTable(productReviews);
                         }
                         reviewManagement.GetReviewsWithReviewAsNice();
+                        break;
+
+                    case 12:
+                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9) && !listOfOptions.Contains(10) && !listOfOptions.Contains(11) && !listOfOptions.Contains(12))
+                        {
+                            reviewManagement.AddDataToTable(productReviews);
+                        }
+                        reviewManagement.AddAndGetUserIdTenOnly();
                         break;
                     default:
                         isRun = !isRun;

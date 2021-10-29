@@ -130,5 +130,34 @@ namespace ProjectReviewManagement
                     $"{review.Field<double>("Rating")}\t{review.Field<string>("Review")}\t{review.Field<bool>("isLike")}");
             }
         }
+
+        // UC12
+        public void AddAndGetUserIdTenOnly()
+        {
+            IList<ProductReview> productReviews = new List<ProductReview>();
+            List<string> reviewList = new List<string>() { "Good", "Bad", "Nice" };
+            Random random = new Random();
+            for (int i = 1; i <= 5; i++)
+            {
+                ProductReview review = new ProductReview();
+                review.ProductID = random.Next(1, 10);
+                review.UserID = 10;
+                review.Rating = random.Next(1, 6);
+                review.Review = reviewList[random.Next(reviewList.Count)];
+                review.isLike = Convert.ToBoolean(random.Next(2));
+                productReviews.Add(review);
+            }
+            foreach (var review in productReviews)
+            {
+                table.Rows.Add(review.ProductID, review.UserID, review.Rating, review.Review, review.isLike);
+            }
+            var reviewsTable = (from review in table.AsEnumerable() where review.Field<int>("UserID").Equals(10) select review).OrderBy(x => x.Field<double>("Rating"));
+            Console.WriteLine($"\nProductID\tUserID\tRating\tReview\tisLike");
+            foreach (DataRow review in reviewsTable)
+            {
+                Console.WriteLine($"{review.Field<int>("productId")}\t\t{review.Field<int>("UserId")}\t" +
+                    $"{review.Field<double>("Rating")}\t{review.Field<string>("Review")}\t{review.Field<bool>("isLike")}");
+            }
+        }
     }
 }
