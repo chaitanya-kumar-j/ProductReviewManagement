@@ -107,5 +107,16 @@ namespace ProjectReviewManagement
                     $"{review.Field<double>("Rating")}\t{review.Field<string>("Review")}\t{review.Field<bool>("isLike")}");
             }
         }
+
+        // UC10
+        public void GetAverageRatingOfEachProductId()
+        {
+            var avgTable = table.AsEnumerable().GroupBy(x => x.Field<int>("ProductID")).Select(x => new { ProductID = x.Key, AverageRating = x.Average(r => r.Field<double>("Rating"))}).OrderBy(x => x.ProductID);
+            Console.WriteLine("\nProductID\tAverageRating");
+            foreach (var count in avgTable)
+            {
+                Console.WriteLine($"{count.ProductID}\t\t{count.AverageRating}");
+            }
+        }
     }
 }

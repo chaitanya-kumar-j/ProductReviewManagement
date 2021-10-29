@@ -68,20 +68,26 @@ namespace ProjectReviewManagement
                         break;
                     case 8:
                         // UC8 
-                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9))
+                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9) && !listOfOptions.Contains(10))
                         {
                             reviewManagement.AddDataToTable(productReviews);
                         }
                         break;
                     case 9:
                         // UC8 
-                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9))
+                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9) && !listOfOptions.Contains(10))
                         {
                             reviewManagement.AddDataToTable(productReviews);
                         }
                         reviewManagement.GetReviewsWithIsLikeAsTrue();
                         break;
-
+                    case 10:
+                        if (!listOfOptions.Contains(8) && !listOfOptions.Contains(9) && !listOfOptions.Contains(10))
+                        {
+                            reviewManagement.AddDataToTable(productReviews);
+                        }
+                        reviewManagement.GetAverageRatingOfEachProductId();
+                        break;
                     default:
                         isRun = !isRun;
                         break;
